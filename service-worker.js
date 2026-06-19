@@ -1,5 +1,5 @@
 /* service-worker.js — Amp Academy Load Calculator · PWA SURFACE */
-const CACHE='aalc-v1';
+const CACHE='aalc-v2';   // v0.5 GEC safety fix
 const SHELL=['./','./index.html','./manifest.json','./apple-touch-icon.png',
   './icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));});
