@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <!-- Load Calc v0.5 vendor 2026-06-18 :: AA-CALC-CORE v0.4 -> v0.5 (sha 53d28480…fe; 54/54). Table 250.66 GEC corrected (was wrong for small services) + 250.66(A/B/C) advisory; getGEC delegates, material-aware. SW cache aalc-v2. Branding (Amp Academy vs ECC) NOT changed — separate owner decision. -->
 <!-- AA-LOADCALC :: verified-engine vendor 2026-06-08 :: leaf math now delegates to AA-CALC-CORE v0.4 (sha256 bdfe8d793657a21c..., 33/33 PASS). Changelog: +engine-vendor (no leaf-output change, 184/184 parity); +input-guard fix 2026-06-08 (0-nameplate range/dryer = absent per Sader; laundry label aligned). -->
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- PWA SURFACE (added 2026-06-08) -->
-  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#0F1F3D">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,12 +17,13 @@
 
 <title>NEC 2017 Load Calculator — Amp Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #0D1B2A;
   --blue: #1565C0;
   --blue-lt: #1976D2;
-  --amber: #F4A300;
+  --amber: #F2A93B;
   --amber-lt: #FFB300;
   --white: #FFFFFF;
   --gray-50: #F8FAFC;
@@ -531,9 +531,12 @@ body {
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .conductor-grid { grid-template-columns: 1fr; }
 }
+h1,h2,h3,h4{font-family:"Syne",sans-serif!important}body{font-family:"Inter",sans-serif!important}
 </style>
+<style id="aa-theme">html[data-theme="dark"]{--white:#161E2E;--gray-50:#0E1422;--gray-100:#1E2740;--gray-200:#2A3550;--gray-300:#3a4760;--gray-400:#7E8AA0;--gray-600:#AEB7C7;--gray-700:#EAEEF6}html[data-theme="dark"] body{background:#0E1422;color:#EAEEF6}.aa-tgl{position:fixed;top:10px;right:12px;z-index:99999;font-size:15px;line-height:1;background:rgba(20,30,50,.55);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 10px;cursor:pointer}</style>
 </head>
 <body>
+<button class="aa-tgl" onclick="aaTgl()" aria-label="Toggle light or dark">◐</button>
 
 <header class="app-header">
   <div class="header-brand">
@@ -1813,5 +1816,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>/* PWA SURFACE */
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./service-worker.js').catch(function(){});});}
 </script>
+<script>function aaTgl(){var h=document.documentElement,d=h.getAttribute("data-theme")==="dark";h.setAttribute("data-theme",d?"light":"dark");try{localStorage.setItem("aa.theme",d?"light":"dark")}catch(e){}}(function(){try{var t=localStorage.getItem("aa.theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 </body>
 </html>
